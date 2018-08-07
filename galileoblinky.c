@@ -14,6 +14,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <fcntl.h>
+#include <string.h>
 
 
 /*=================================================*/
@@ -55,7 +56,7 @@ int export(unsigned int gpio)
 	return 0;
 }
 
-int dir(int gpio, char * dir)
+int direction(int gpio, char * dir)
 {
 	char buff[LENGTH];
 	FILE * file;
@@ -135,7 +136,6 @@ int setval(int gpio, int val)
 	FILE * file;
 
 	snprintf(buff, LENGTH, SYSFS_GPIO_DIR"gpio%d/value", gpio);
-	"/sys/class/gpio/gpio135/value"
 	file = fopen(buff, "w");
 	if (file == NULL) {
 		printf("unable to open %s\n", buff);
